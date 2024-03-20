@@ -8,3 +8,4 @@ variable "bucket_name" {
 variable "website_endpoint" {
   default = "true"
 }
+
