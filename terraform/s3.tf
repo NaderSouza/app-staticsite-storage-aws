@@ -5,11 +5,12 @@ resource "aws_s3_bucket" "bucket" {
 }
 
 resource "aws_s3_bucket_ownership_controls" "bucket-ownership" {
-  bucket   = aws_s3_bucket.bucket.id
+  bucket = aws_s3_bucket.bucket.id
   rule {
     object_ownership = "BucketOwnerPreferred"
   }
 }
+
 
 resource "aws_s3_bucket_public_access_block" "bucket-public-access" {
   bucket                  = aws_s3_bucket.bucket.id
@@ -24,8 +25,8 @@ resource "aws_s3_bucket_acl" "bucket-acl" {
     aws_s3_bucket_ownership_controls.bucket-ownership,
     aws_s3_bucket_public_access_block.bucket-public-access,
   ]
-  bucket   = aws_s3_bucket.bucket.id
-  acl      = "public-read"
+  bucket = aws_s3_bucket.bucket.id
+  acl    = "public-read"
 }
 
 resource "aws_s3_bucket_versioning" "bucket-versioning" {
